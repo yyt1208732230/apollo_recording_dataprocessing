@@ -2,6 +2,11 @@
 The dataprocessing scripts for ORED real car dataset
 
 1. 配置文件位置：打开.env, 按照格式修改文件位置以及标准的Sync同步时间 (来自脑电数据文件内的Sync时间)。
+- PNAME：试次编号，也是文件夹路径变量 （如，'P04'）
+- APOLLO_RECORD_FILE_INDEX: apollo recorder的录制文件的前缀 （如，'20230505170116.record'）
+- MARKER_TIME_EEG： Sync时间的世界时间 （格式为，'2023-05-05 17:03:34.344'）
+- STANDARD_TIME_EEG：以脑电curry9中的Sync时间为标准的Sync秒数（s）(如，'247.531')
+- CANBUS_FOLDER_PATH：Canbus Raw data所在文件夹，试次编号以_PXX_替换 （如，'G://Real Road AIR Dataset//_PXX_//7.CANBus//'）
 2. 解析底盘数据和GPS数据：运行 1_readrecord_fixgps.py，代码将读取所有环境配置内的.record文件，解析pose model和chassis model的数据，对GPS进行修正，并保存成CSV格式文件（fixgpschassis--yyyymmddhhmmss.record.csv）。【解析包 cyber_recorder】
 - timestamp：工控机时间戳
 - gps.latitude：融合定位后的纬度
